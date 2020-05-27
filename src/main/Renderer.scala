@@ -16,14 +16,14 @@ object Renderer {
 
     val R = cos(Pi/4)
 
-    val lookFrom = new Point(3,3,5);
+    val lookFrom = new Point(1,0.5,2);
     val lookAt = new Point(0,0,-1);
     val viewUp = new Vector3d(0,1,0);
-    val aperture = 2.0;
+    val aperture = 0;
     val focusDistance = (lookFrom-lookAt).length;
 
 
-    val camera:Camera = new Camera(lookFrom, lookAt, viewUp, 45)
+    val camera:Camera = new Camera(lookFrom, lookAt, viewUp, 20, aperture, focusDistance)
 
 
 

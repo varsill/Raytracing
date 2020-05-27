@@ -1,0 +1,5 @@
+package materials
+
+class Material {
+
+}
