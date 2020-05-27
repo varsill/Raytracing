@@ -29,7 +29,7 @@ class Generator(private val filename:String) {
     val writer = new PrintWriter(new File(filename));
     try {
       writeHeader(writer);
-      for(y <- 0 until Settings.HEIGHT)
+      for(y <- Settings.HEIGHT-1 to 0 by -1)
       {
 
         for(x <-0 until Settings.WIDTH)

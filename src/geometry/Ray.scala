@@ -5,8 +5,9 @@ import java.beans.BeanProperty
 
 import math.sqrt
 
-class Ray(@BeanProperty origin: Point, @BeanProperty dir:Vector3d) {
+class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d) {
   def at(t:Double):Vector3d = { origin+dir*t}
+  /*
   def hit_sphere(center: Point , radius:Double):Double={
 
     val oc: Vector3d = this.origin - center;
@@ -21,14 +22,42 @@ class Ray(@BeanProperty origin: Point, @BeanProperty dir:Vector3d) {
     }
 
   }
-  def rayColor(): Color= {
-    var t: Double = hit_sphere(new Point(0,-0.1,-2), 0.5)
-    if(t>0.0) {
-      val N: Vector3d = at(t) - new Vector3d(0, 0, -1)
-      return new Color(N.x+1, N.y+1, N.z+1)*0.5
+   */
+
+  def hit_sphere(center:Point, radius:Double):Double={
+    val oc = this.origin - center
+    val a = this.dir.length_squared
+    val half_b = oc*this.dir
+    val c = oc.length_squared - radius * radius
+    val discriminant = half_b * half_b - a * c
+
+    if (discriminant < 0) return -1.0
+    else return (-half_b - sqrt(discriminant)) / a
+  }
+
+
+
+  def rayColor(world: HittableList): Color= {
+    var INFINITY = 9999999.0
+
+    world.hit(this, 0, INFINITY) match {
+      case Some(rec)=>
+      {
+        //return new Color(1,0,0)
+        return new Color(rec.normal + new Color(1, 1, 1)) * 0.5
+      }
+      case None =>
+      { val t = 0.5 * (dir.unit.y + 1.0);
+        new Color(1.0, 1.0, 1.0)* (1.0 - t) + (new Color(0.5, 0.7, 1.0))*t}
     }
-    t = 0.5 * (dir.unit.y + 1.0);
-    new Color(0.5, 0.7, 1.0)* (1.0 - t) + (new Color(1.0, 1.0, 1.0))*t
+
+/*
+    if(hit_sphere(new Point(0, 0, -1), 0.5)>0)
+      {
+        return new Color(1,0,0)
+      }
+*/
+
   }
 }
 

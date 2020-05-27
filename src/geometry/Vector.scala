@@ -2,7 +2,7 @@ package geometry
 import math._
 import scala.language.postfixOps
 import scala.reflect.ClassTag
-class Vector[T:Numeric](private val coeffs: Array[T])(implicit c: ClassTag[T]) {
+class Vector[T:Numeric](val coeffs: Array[T])(implicit c: ClassTag[T]) {
 
 
   def length_squared: T= {

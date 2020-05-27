@@ -11,6 +11,7 @@ class Vector3d(@BeanProperty val x: Double, @BeanProperty  val y:Double, @BeanPr
     override def *(scalar: Double) = {new Vector3d(x*scalar, y*scalar, z*scalar) }
     def +(that: Vector3d) = {new Vector3d(this.x+that.x, this.y+that.y, this.z+that.z) }
     def -(that: Vector3d) = {new Vector3d(this.x-that.x, this.y-that.y, this.z-that.z) }
+    override def unary_-() = {new Vector3d(-this.x, -this.y, -this.z) }
 }
 
 

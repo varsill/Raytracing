@@ -4,7 +4,7 @@ import scala.beans.BeanProperty
 
 class Color(@BeanProperty val r: Double, @BeanProperty  val g:Double, @BeanProperty val b:Double) extends Vector[Double](Array(r, g, b))
 {
-
+ def this(vector: Vector[Double])=this(vector.coeffs(0), vector.coeffs(1), vector.coeffs(2))
  override def toString() = {(255.999*r).toInt.toString+" "+(255.999*g).toInt.toString+" "+(255.999*b).toInt.toString+"\n"}
 
  override def *(scalar: Double) = {new Color(r*scalar, g*scalar, b*scalar) }
