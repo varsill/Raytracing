@@ -1,5 +1,9 @@
 package main
 
+import java.awt.Dialog
+
+import javax.swing.ImageIcon
+
 object Main {
 def main(args:Array[String])={
 
@@ -9,5 +13,6 @@ def main(args:Array[String])={
 
   gen.loadScene(m)
   gen.save()
+
 }
 }

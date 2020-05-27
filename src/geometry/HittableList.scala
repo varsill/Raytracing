@@ -16,7 +16,6 @@ class HittableList{
       var wasHitted = false;
       var closestSoFar = tMax;
       var rec: HitRecord = null
-      //return objects(0).hit(r, 0, 99.0)
 
       objects.foreach((f:Hittable)=>{
         f.hit(r, tMin, closestSoFar) match {

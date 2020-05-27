@@ -8,20 +8,6 @@ import math.sqrt
 class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d) {
   def at(t:Double):Vector3d = { origin+dir*t}
 
-
-  def hit_sphere(center:Point, radius:Double):Double={
-    val oc = this.origin - center
-    val a = this.dir.length_squared
-    val half_b = oc*this.dir
-    val c = oc.length_squared - radius * radius
-    val discriminant = half_b * half_b - a * c
-
-    if (discriminant < 0) return -1.0
-    else return (-half_b - sqrt(discriminant)) / a
-  }
-
-
-
   def rayColor(world: HittableList, depth:Int=0): Color= {
     if (depth >=Settings.MAX_DEPTH) return new Color(0,0,0)
 

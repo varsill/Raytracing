@@ -1,7 +1,7 @@
 package main
 
 import geometry._
-
+import math._
 object Renderer {
   val randomGenerator = scala.util.Random
 
@@ -14,19 +14,30 @@ object Renderer {
     }
   def render() = {
 
+    val R = cos(Pi/4)
 
-    val camera:Camera = new Camera
+    val lookFrom = new Point(3,3,5);
+    val lookAt = new Point(0,0,-1);
+    val viewUp = new Vector3d(0,1,0);
+    val aperture = 2.0;
+    val focusDistance = (lookFrom-lookAt).length;
+
+
+    val camera:Camera = new Camera(lookFrom, lookAt, viewUp, 45)
+
+
+
     val world: HittableList = new HittableList()
     world.add(new Sphere(new Point(0,0,-1), 0.5))
-    world.add(new Sphere(new Point(0,-100.5,-1), 100))
+    world.add(new Sphere(new Point(R,-100.5,-1), 100))
 
-    world.add(new Sphere(new Point(2,1.5,-3), 1))
+    //world.add(new Sphere(new Point(R,0,-1), 0.5))
 
     val matrix= Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)
     var ray:Ray=null;
     for (i <-0 to Settings.WIDTH-1   )
     {
-
+      println("Processing: ", i, "/", Settings.WIDTH-1)
       for (j <- 0 to Settings.HEIGHT-1)
       {
         var pixelColor = new Color(0,0,0)

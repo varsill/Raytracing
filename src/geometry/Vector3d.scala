@@ -14,7 +14,9 @@ class Vector3d(@BeanProperty val x: Double, @BeanProperty  val y:Double, @BeanPr
     def -(that: Vector3d) = {new Vector3d(this.x-that.x, this.y-that.y, this.z-that.z) }
     override def unary_- = {new Vector3d(-this.x,-this.y,-this.z)}
     def ==(that: Vector3d) = {this.x == that.x && this.y == that.y && this.z == that.z}
-
+    def cross(that: Vector3d):Vector3d = new Vector3d(this.y * that.z - this.z * that.y,
+        this.z * that.x - this.x * that.z,
+        this.x * that.y - this.y * that.x);
 
 
 }
@@ -35,8 +37,8 @@ object Vector3d
     def randomInUnitSphere() =
     {
         var vec:Vector3d=random(-1, 1)
-            while(vec.length_squared>=1) vec = random(-1, 1)
-            vec
+        while(vec.length_squared>=1) vec = random(-1, 1)
+        vec
     }
     def randomUnitVector() =
         {
@@ -45,6 +47,13 @@ object Vector3d
             val r = sqrt(1 - z*z);
             new Vector3d(r*cos(a), r*sin(a), z);
         }
+
+    def randomInUnitDisk(): Vector3d =
+    {
+        var vec:Vector3d=new Vector3d(randomDouble(-1, 1), randomDouble(-1, 1), 0)
+        while(vec.length_squared>=1) vec = new Vector3d(randomDouble(-1, 1), randomDouble(-1, 1), 0)
+        vec
+    }
 
 }
 
