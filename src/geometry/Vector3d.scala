@@ -55,6 +55,10 @@ object Vector3d
         vec
     }
 
+
+    def reflect(v:Vector3d, n:Vector3d): Vector3d =  v - n*(n*v)*2
+
+
 }
 
 

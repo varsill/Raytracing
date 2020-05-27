@@ -15,8 +15,14 @@ class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d) {
     world.hit(this, Settings.EPSILON, Settings.INFINITY) match {
       case Some(rec)=>
       {
-        val target: Point = rec.p + rec.normal + Vector3d.randomUnitVector()
-        new Ray(rec.p, target - rec.p).rayColor(world, depth+1)*0.5
+
+        rec.material.scatter(this, rec) match
+        {
+           case (Some(attenuation), Some(scattered))=> scattered.rayColor(world, depth+1) multiplyElementwise attenuation;
+           case(None, None)=>new Color(0,0,0);
+        }
+       // val target: Point = rec.p + rec.normal + Vector3d.randomUnitVector()
+       // new Ray(rec.p, target - rec.p).rayColor(world, depth+1)*0.5
 
       }
       case None =>

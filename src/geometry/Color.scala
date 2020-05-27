@@ -19,6 +19,8 @@ class Color(@BeanProperty var r: Double, @BeanProperty  var g:Double, @BeanPrope
  def +(that: Color ) = {new Color(this.r+that.r, this.g+that.g, this.b+that.b) }
  def -(that: Color) = {new Color(this.r-that.r, this.g-that.g, this.b-that.b) }
  def +=(that: Color ) = {this.r+=that.r; this.g+=that.g; this.b+=that.b; }
+
+ def multiplyElementwise(that: Color) = new Color(this.r*that.r, this.g*that.g, this.b*that.b)
 }
 
 

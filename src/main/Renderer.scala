@@ -1,6 +1,8 @@
 package main
 
 import geometry._
+import materials.{Lambertian, Metal}
+
 import math._
 object Renderer {
   val randomGenerator = scala.util.Random
@@ -16,7 +18,7 @@ object Renderer {
 
     val R = cos(Pi/4)
 
-    val lookFrom = new Point(1,0.5,2);
+    val lookFrom = new Point(1,0.5,5);
     val lookAt = new Point(0,0,-1);
     val viewUp = new Vector3d(0,1,0);
     val aperture = 0;
@@ -26,11 +28,13 @@ object Renderer {
     val camera:Camera = new Camera(lookFrom, lookAt, viewUp, 20, aperture, focusDistance)
 
 
-
+    val lambert1 = new Lambertian(new Color(0.0, 1.0, 0.0))
+    val lambert2= new Lambertian(new Color(1.0, 1.0, 0.0))
+    val metal = new Metal(new Color(0.5, 0.7, 1.0))
     val world: HittableList = new HittableList()
-    world.add(new Sphere(new Point(0,0,-1), 0.5))
-    world.add(new Sphere(new Point(R,-100.5,-1), 100))
-
+    world.add(new Sphere(new Point(0,0,-1), 0.5, metal))
+    world.add(new Sphere(new Point(R,-100.5,-1), 100, lambert1))
+    world.add(new Sphere(new Point(R,0,-1), 0.5, lambert2))
     //world.add(new Sphere(new Point(R,0,-1), 0.5))
 
     val matrix= Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)
