@@ -1,0 +1,7 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mVector3dTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- Vector3d add[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- Vector3d diff[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- Vector3d neg[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- Vector3d mult[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- scalar mult[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- scalar div[0m[0m
