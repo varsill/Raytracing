@@ -2,7 +2,7 @@ package main
 
 object Settings {
 
-  val WIDTH = 1000;
+  val WIDTH = 384;
   val TYPE = "P3"; //file format
   val NUMBER_OF_COLOURS = 255;
   val ASPECT_RATIO = 16.0/9.0
