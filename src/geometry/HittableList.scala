@@ -20,7 +20,7 @@ class HittableList{
 
       objects.foreach((f:Hittable)=>{
         f.hit(r, tMin, closestSoFar) match {
-          case None=>println("bez")
+          case None=>
           case Some(tempRec) => {
             wasHitted = true;
             closestSoFar = tempRec.t;

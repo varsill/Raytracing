@@ -13,8 +13,6 @@ class Sphere(val center: Point, val radius:Double) extends Hittable {
     val discriminant = half_b * half_b - a * c
     if (discriminant > 0)
     {
-      //return Some(new HitRecord(new Point(0,0,0), new Point(0,0,0), 0))
-
       val root = sqrt(discriminant)
       var temp = (-half_b - root) / a
       if (temp < tMax && temp > tMin)
