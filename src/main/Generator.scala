@@ -1,8 +1,12 @@
+package main
 
+
+
+import java.io._
+
+import geometry._
 
 import scala.language.reflectiveCalls
-import java.io._
-import geometry._
 class Generator(private val filename:String) {
 
   var matrix: Array[Array[Color]] = Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)

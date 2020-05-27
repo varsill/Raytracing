@@ -1,6 +1,7 @@
-
+package main
 
 import geometry._
+
 object Renderer {
   val randomGenerator = scala.util.Random
 
@@ -19,7 +20,7 @@ object Renderer {
     world.add(new Sphere(new Point(0,0,-1), 0.5))
     world.add(new Sphere(new Point(0,-100.5,-1), 100))
 
-
+    world.add(new Sphere(new Point(2,1.5,-3), 1))
 
     val matrix= Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)
     var ray:Ray=null;

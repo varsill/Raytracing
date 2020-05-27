@@ -1,3 +1,5 @@
+package main
+
 import geometry.{Point, Ray, Vector3d}
 
 class Camera(val viewportHeight: Double = 2.0,val focalLength:Double = 1.0, val origin:Point = new Point(0,0,0) ) {
