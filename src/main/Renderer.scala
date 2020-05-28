@@ -14,28 +14,35 @@ object Renderer {
     def randomDouble(): Double = {
           randomDouble(0,1)
     }
-  def render() = {
+  def render(lookFrom:Point, lookAt:Point, aperture:Double, fieldOfView: Double) = {
 
-    val R = cos(Pi/4)
+    val viewUp = new Vector3d(0,4,0);
 
-    val lookFrom = new Point(1,0.5,5);
-    val lookAt = new Point(0,0,-1);
-    val viewUp = new Vector3d(0,1,0);
-    val aperture = 0;
     val focusDistance = (lookFrom-lookAt).length;
 
 
-    val camera:Camera = new Camera(lookFrom, lookAt, viewUp, 20, aperture, focusDistance)
+    val camera:Camera = new Camera(lookFrom, lookAt, viewUp, fieldOfView, aperture, focusDistance)
 
 
-    val lambert1 = new Lambertian(new Color(0.0, 1.0, 0.0))
-    val lambert2= new Lambertian(new Color(1.0, 1.0, 0.0))
+    val lambertGrass = new Lambertian(new Color(1.0, 1.0, 0.0))
+    val lambertGreen= new Lambertian(new Color(0.0, 1.0, 0.0))
+    val lambertBlue= new Lambertian(new Color(0.0, 0.0, 1.0))
+    val lambertRed= new Lambertian(new Color(1.0, 0.0, 0.0))
+    val lambertGrey= new Lambertian(new Color(0.5,0.5,0.5))
     val metal = new Metal(new Color(0.5, 0.7, 1.0))
+    val metalRed = new Metal(new Color(1.0, 0.0, 0.0))
+    val metalYellow = new Metal(new Color(1.0, 1.0, 0.875))
     val world: HittableList = new HittableList()
-    world.add(new Sphere(new Point(0,0,-1), 0.5, metal))
-    world.add(new Sphere(new Point(R,-100.5,-1), 100, lambert1))
-    world.add(new Sphere(new Point(R,0,-1), 0.5, lambert2))
-    //world.add(new Sphere(new Point(R,0,-1), 0.5))
+
+
+    world.add(new Sphere(new Point(0,0.5,-1), 0.5, metal))
+    world.add(new Sphere(new Point(-2,-100,-1), 100, lambertGrey))
+    world.add(new Sphere(new Point(1.5,0.3,-1.5), 0.25, lambertGreen))
+    world.add(new Sphere(new Point(-1.5,1,-2), 1, metalRed))
+    world.add(new Sphere(new Point(-2,3,-2), 0.5, lambertBlue))
+    world.add(new Sphere(new Point(1.4,0.3,0), 0.25, metalYellow))
+
+
 
     val matrix= Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)
     var ray:Ray=null;
