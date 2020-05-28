@@ -1,7 +1,7 @@
 package main
 
 import geometry._
-import materials.{Lambertian, Metal}
+import materials.{Dielectric, Lambertian, Metal}
 
 import math._
 object Renderer {
@@ -29,6 +29,7 @@ object Renderer {
     val lambertBlue= new Lambertian(new Color(0.0, 0.0, 1.0))
     val lambertRed= new Lambertian(new Color(1.0, 0.0, 0.0))
     val lambertGrey= new Lambertian(new Color(0.5,0.5,0.5))
+    val dielectric = new Dielectric(1.5)
     val metal = new Metal(new Color(0.5, 0.7, 1.0))
     val metalRed = new Metal(new Color(1.0, 0.0, 0.0))
     val metalYellow = new Metal(new Color(1.0, 1.0, 0.875))
@@ -40,7 +41,7 @@ object Renderer {
     world.add(new Sphere(new Point(1.5,0.3,-1.5), 0.25, lambertGreen))
     world.add(new Sphere(new Point(-1.5,1,-2), 1, metalRed))
     world.add(new Sphere(new Point(-2,3,-2), 0.5, lambertBlue))
-    world.add(new Sphere(new Point(1.4,0.3,0), 0.25, metalYellow))
+    world.add(new Sphere(new Point(1.4,0.3,0), 0.25, dielectric))
 
 
 
