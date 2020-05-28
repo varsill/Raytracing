@@ -5,14 +5,16 @@ import main.Settings
 
 import math.sqrt
 
-class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d) {
-  def at(t:Double):Vector3d = { origin+dir*t}
+class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d)
+{
 
-  def rayColor(world: HittableList, depth:Int=0): Color= {
+  def at(t:Double):Vector3d = origin+dir*t
+  def rayColor(world: HittableList, depth:Int=0): Color=
+  {
     if (depth >=Settings.MAX_DEPTH) return new Color(0,0,0)
 
 
-    world.hit(this, Settings.EPSILON, Settings.INFINITY) match {
+      world.hit(this, Settings.EPSILON, Settings.INFINITY) match {
       case Some(rec)=>
       {
 
@@ -21,9 +23,6 @@ class Ray(@BeanProperty val origin: Point, @BeanProperty val dir:Vector3d) {
            case (Some(attenuation), Some(scattered))=> scattered.rayColor(world, depth+1) multiplyElementwise attenuation;
            case(None, None)=>new Color(0,0,0);
         }
-       // val target: Point = rec.p + rec.normal + Vector3d.randomUnitVector()
-       // new Ray(rec.p, target - rec.p).rayColor(world, depth+1)*0.5
-
       }
       case None =>
       {

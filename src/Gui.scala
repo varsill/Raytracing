@@ -7,13 +7,8 @@ import geometry.Point
 import javax.swing.{ImageIcon, JButton, JFrame, JLabel, JPanel, JScrollPane, JTextArea, JTextField, WindowConstants}
 import main.{Generator, Renderer, Settings}
 
-object Gui extends App with ActionListener {
-
-
-
-
-
-
+object Gui extends App with ActionListener
+{
   val textArea = new JTextArea
   textArea.setText("Raytracer")
   val scrollPane = new JScrollPane(textArea)

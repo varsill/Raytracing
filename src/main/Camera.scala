@@ -25,8 +25,6 @@ class Camera(val lookFrom:Point, val lookAt:Point, val viewUp: Vector3d, val fie
   {
     val rd =  Vector3d.randomInUnitDisk*lens_radius
     val offset = u * rd.x + v * rd.y
-
     new Ray(origin + offset, lower_left_corner + horizontal*s + vertical*t - origin - offset)
-    //new Ray(origin, lower_left_corner + horizontal*u + vertical*v - origin);
   }
 }

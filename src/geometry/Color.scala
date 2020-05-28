@@ -15,9 +15,9 @@ class Color(@BeanProperty var r: Double, @BeanProperty  var g:Double, @BeanPrope
 
  }
 
- override def *(scalar: Double) = {new Color(r*scalar, g*scalar, b*scalar) }
- def +(that: Color ) = {new Color(this.r+that.r, this.g+that.g, this.b+that.b) }
- def -(that: Color) = {new Color(this.r-that.r, this.g-that.g, this.b-that.b) }
+ override def *(scalar: Double) = new Color(r*scalar, g*scalar, b*scalar)
+ def +(that: Color ) = new Color(this.r+that.r, this.g+that.g, this.b+that.b)
+ def -(that: Color) = new Color(this.r-that.r, this.g-that.g, this.b-that.b)
  def +=(that: Color ) = {this.r+=that.r; this.g+=that.g; this.b+=that.b; }
 
  def multiplyElementwise(that: Color) = new Color(this.r*that.r, this.g*that.g, this.b*that.b)
@@ -26,6 +26,6 @@ class Color(@BeanProperty var r: Double, @BeanProperty  var g:Double, @BeanPrope
 
 object Color
 {
- val samplesPerPixel = 10
- def clamp(x:Double, min:Double, max:Double ):Double  = if (x < min)  min else if(x>max)  max else  x
+   val samplesPerPixel = 10
+   def clamp(x:Double, min:Double, max:Double ):Double  = if (x < min)  min else if(x>max)  max else  x
 }

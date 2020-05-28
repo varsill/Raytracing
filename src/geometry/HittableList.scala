@@ -17,20 +17,19 @@ class HittableList{
       var closestSoFar = tMax;
       var rec: HitRecord = null
 
-      objects.foreach((f:Hittable)=>{
+      objects.foreach((f:Hittable)=> {
         f.hit(r, tMin, closestSoFar) match {
-          case None=>
+          case None =>
           case Some(tempRec) => {
             wasHitted = true;
             closestSoFar = tempRec.t;
             rec = tempRec;
           }
-      }
-      }
-      )
+        }
+      })
 
       if(wasHitted) Some(rec) else None
 
-      }
+    }
 
 }

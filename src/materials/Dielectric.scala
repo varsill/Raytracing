@@ -4,8 +4,10 @@ import geometry.{Color, HitRecord, Ray, Vector3d}
 
 import scala.util.Random
 
-class Dielectric (refIdx: Double) extends Material{
-  def scatter(rayIn: Ray, hitRecord: HitRecord):(Option[Color], Option[Ray]) = {
+class Dielectric (refIdx: Double) extends Material
+{
+  def scatter(rayIn: Ray, hitRecord: HitRecord):(Option[Color], Option[Ray]) =
+  {
     val reflected = Vector3d.reflect(rayIn.dir.unit, hitRecord.normal);
     val attenuation = new Color(1.0, 1.0, 1.0)
 
@@ -13,12 +15,15 @@ class Dielectric (refIdx: Double) extends Material{
     var niOverNt: Double = 0
     var outwardNormal = new Vector3d(0,0,0)
 
-    if(rayIn.dir * hitRecord.normal > 0){
+    if(rayIn.dir * hitRecord.normal > 0)
+    {
       outwardNormal = -hitRecord.normal
       niOverNt = refIdx
-      var cosine = rayIn.dir * refIdx * hitRecord.normal / rayIn.dir.length
+      cosine = rayIn.dir * refIdx * hitRecord.normal / rayIn.dir.length
     }
-    else{
+
+    else
+    {
       outwardNormal = hitRecord.normal
       niOverNt = 1.0/refIdx
       cosine = -(rayIn.dir * refIdx * hitRecord.normal) / rayIn.dir.length
@@ -26,11 +31,10 @@ class Dielectric (refIdx: Double) extends Material{
 
     val reflectProb = Material.schlick(cosine, refIdx)
 
-    Material.refract(rayIn.dir, outwardNormal, niOverNt) match{
-      case Some(refracted) if reflectProb <= Random.nextDouble() =>
-        (Some(attenuation), Some(new Ray(hitRecord.p, refracted)))
-      case _ =>
-        (Some(attenuation), Some(new Ray(hitRecord.p, reflected)))
+    Material.refract(rayIn.dir, outwardNormal, niOverNt) match
+    {
+      case Some(refracted) if reflectProb <= Random.nextDouble() => (Some(attenuation), Some(new Ray(hitRecord.p, refracted)))
+      case _ => (Some(attenuation), Some(new Ray(hitRecord.p, reflected)))
     }
 
   }

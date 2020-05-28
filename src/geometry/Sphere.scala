@@ -13,6 +13,7 @@ class Sphere(val center: Point, val radius:Double, val material:Material) extend
     val half_b = oc*ray.dir
     val c = oc.length_squared - radius * radius
     val discriminant = half_b * half_b - a * c
+
     if (discriminant > 0)
     {
       val root = sqrt(discriminant)
@@ -36,10 +37,7 @@ class Sphere(val center: Point, val radius:Double, val material:Material) extend
       }
       None
     }
-    else
-    {
-        None
-    }
+    else None
   }
 
 

@@ -8,6 +8,7 @@ class Lambertian(val albedo:Color) extends Material {
     {
       val scatter_direction = rec.normal + Vector3d.randomUnitVector();
       val scattered = (new Ray(rec.p, scatter_direction));
+
       (Some(albedo),Some(scattered))
     }
 
