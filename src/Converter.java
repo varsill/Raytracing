@@ -1,14 +1,9 @@
-import scala.Int;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-
-
-
 
 public class Converter {
     static public BufferedImage ppm(int width, int height, int maxcolval, String path) {
@@ -17,6 +12,7 @@ public class Converter {
         int x, y;
         x = y = 0;
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
         try {
             FileInputStream fstream = new FileInputStream(path);
             DataInputStream in = new DataInputStream(fstream);
@@ -46,8 +42,8 @@ public class Converter {
             System.err.println("Error: " + e.getMessage());
         }
         return image;
-
     }
+
 }
 
 
