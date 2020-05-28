@@ -1,5 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/michlampert/ray/ray/src/main/scala/geometry/Vector3d.scala:14:9: `override` modifier required to override concrete member:[0m
-[0m[[0m[31merror[0m] [0m[0mdef unary_-: main.geometry.Vector[Double] (defined in class Vector)[0m
-[0m[[0m[31merror[0m] [0m[0m    def unary_- = {new Vector3d(-this.x,-this.y,-this.z)}[0m
-[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/michlampert/Raytracing/Raytracing/src/main/scala/Main.scala:18:38: not found: value i[0m
+[0m[[0m[31merror[0m] [0m[0m    val gen = new Generator("haha" + i + ".ppm");[0m
+[0m[[0m[31merror[0m] [0m[0m                                     ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

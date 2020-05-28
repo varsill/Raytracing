@@ -1,12 +1,14 @@
-package main.geometry
+ 
+package geometry
+import materials.Material
 
 import math.sqrt
-class Sphere(val center: Point, val radius:Double) extends Hittable {
+class Sphere(val center: Point, val radius:Double, val material:Material) extends Hittable {
 
 
   override def hit(ray: Ray, tMin: Double, tMax: Double): Option[HitRecord] =
   {
-    //println(ray.dir)
+
     val oc = ray.origin - this.center
     val a = ray.dir.length_squared
     val half_b = oc*ray.dir
@@ -20,7 +22,7 @@ class Sphere(val center: Point, val radius:Double) extends Hittable {
       {
         val p = ray.at(temp)
         val outwardNormal = (p-center)/radius
-        val hitRecord = new HitRecord(p, (p-center)/radius, temp)
+        val hitRecord = new HitRecord(p, (p-center)/radius, temp, material)
         hitRecord.setFaceNormal(ray, outwardNormal)
         return Some(hitRecord)
       }
@@ -29,7 +31,7 @@ class Sphere(val center: Point, val radius:Double) extends Hittable {
       {
         val p = ray.at(temp)
         val outwardNormal = (p-center)/radius
-        val hitRecord = new HitRecord(p, (p-center)/radius, temp)
+        val hitRecord = new HitRecord(p, (p-center)/radius, temp, material)
         hitRecord.setFaceNormal(ray, outwardNormal)
         return Some(hitRecord)
       }

@@ -1,10 +1,13 @@
+ 
 package main
 
 
 
-import scala.language.reflectiveCalls
 import java.io._
+
 import geometry._
+
+import scala.language.reflectiveCalls
 class Generator(private val filename:String) {
 
   var matrix: Array[Array[Color]] = Array.ofDim[Color](Settings.WIDTH, Settings.HEIGHT)
@@ -40,7 +43,7 @@ class Generator(private val filename:String) {
         }
 
       }
-    println("Saving to file finished.");
+    // println("Saving to file finished.");
     }
     catch
     {

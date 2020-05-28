@@ -1,4 +1,5 @@
-package main.geometry
+ 
+package geometry
 import math._
 import scala.language.postfixOps
 import scala.reflect.ClassTag
@@ -23,5 +24,4 @@ class Vector[T:Numeric](val coeffs: Array[T])(implicit c: ClassTag[T]) {
 
 
 }
-
 

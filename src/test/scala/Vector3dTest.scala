@@ -1,4 +1,4 @@
-import main.geometry._
+import geometry._
 
 class Vector3dTest extends org.scalatest.FunSuite {
 
